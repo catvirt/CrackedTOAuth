@@ -33,6 +33,8 @@ namespace AuthExample
             if (!authSetup.Authenticated)
             {
                 Console.WriteLine(" The key you provided was incorrect!");
+                
+                await Task.Delay(1000);
 
                 Environment.Exit(0);
 
@@ -42,6 +44,8 @@ namespace AuthExample
             if (!UserGroup.UserGroups.Any(authSetup.Group.Contains))
             {
                 Console.WriteLine(" You don't have the required UG! ");
+                
+                await Task.Delay(1000);
 
                 Environment.Exit(0);
 
