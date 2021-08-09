@@ -41,7 +41,7 @@ namespace AuthExample
                 return;
             }
 
-            if (!UserGroup.UserGroups.All(authSetup.Group.Contains))
+            if (!UserGroup.UserGroups.Any(s => s == authSetup.Group))
             {
                 Console.WriteLine(" You don't have the required UG! ");
                 
