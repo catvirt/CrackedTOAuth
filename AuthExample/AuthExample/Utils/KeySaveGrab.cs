@@ -17,8 +17,8 @@ namespace AuthExample.Utils
             );
             await File.AppendAllTextAsync(path, keySaveHandler);
         }
-        public static Key GetKey(string path) => JsonConvert.DeserializeObject<Key>(
-            File.ReadAllText(path)
+        public static async Task<Key> GetKey(string path) => JsonConvert.DeserializeObject<Key>(
+            await File.ReadAllTextAsync(path)
         );
     }
 }
