@@ -10,11 +10,6 @@ namespace AuthExample.Utils
         private readonly string _crackedToAdress = "https://cracked.to/auth.php";
         public async Task<string> SendAsync(HttpMethod httpMethod, Dictionary<string, string> postData = null)
         {
-            if (httpMethod is null)
-            {
-                throw new ArgumentNullException(nameof(httpMethod));
-            }
-
             if (postData is null)
             {
                 throw new ArgumentNullException(nameof(postData));
