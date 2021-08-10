@@ -19,7 +19,7 @@ namespace AuthExample
 
             if (File.Exists("key.json"))
             {
-                key = KeySaveGrab.GetKey("key.json").KeyAuth;
+                key = (await KeySaveGrab.GetKey("key.json")).KeyAuth;
             }
             else
             {
