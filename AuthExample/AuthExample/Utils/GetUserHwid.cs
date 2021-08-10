@@ -9,17 +9,16 @@ namespace AuthExample.Utils
         /// <returns></returns>
         public string getUserHwid()
         {
-            var mbs = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");
-
-            var mbsList = mbs.Get();
-
-            foreach (var mo in mbsList)
+            var sb = new StringBuilder();
+            using MD5 md5 = MD5.Create();
+            foreach (byte b in md5.ComputeHash(Encoding.ASCII.GetBytes($"{DriveInfo.GetDrives().Length}-{Environment.ProcessorCount}-{(int)Environment.OSVersion.Platform}-{Environment.Is64BitOperatingSystem}-{Ram}-{Environment.MachineName}")))
             {
-                return mo["ProcessorId"].ToString();
+                sb.Append($"{b:X2}");
             }
-
-            return null;
+            return sb.ToString(); ;
         }
+
+        public const long Ram = -13580913195871;
 
     }
 }
